@@ -8,9 +8,43 @@
     <script src="script.js" defer></script>
 </head>
 
-<body>
+<body id="layout-container">
 
-<main>
+<header id="header-container">
+
+    <p id="title-text">Tic-Tac-Toe</p>
+
+    <form id="player-form" action="">
+
+        <div class="player-form-item-container">
+            <label for="player-x">Player X</label>
+            <input id="player-x" type="text" maxlength="12" placeholder="Player X">
+        </div>
+
+        <p id="vs-text">VS</p>
+
+        <div class="player-form-item-container">
+            <label for="player-o">Player O</label>
+            <input type="text" maxlength="12" placeholder="Player O">
+        </div>
+
+    </form>
+    
+    <button id="game-button">Start Game</button>
+    
+</header>
+
+<main id="main-container">
+
+    <button class="board-button"></button>
+    <button class="board-button"></button>
+    <button class="board-button"></button>
+    <button class="board-button"></button>
+    <button class="board-button"></button>
+    <button class="board-button"></button>
+    <button class="board-button"></button>
+    <button class="board-button"></button>
+    <button class="board-button"></button>
 
 </main>
 
