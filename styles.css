@@ -127,7 +127,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Main */
 
-#turn-indicator {
+#turn-indicator-text {
     font-size: 2rem;
 }
 
@@ -140,9 +140,12 @@ h1, h2, h3, h4, h5, h6 {
     background-color: black;
     gap: 5px;
     padding: 5px;
+    border-radius: 5px;
 }
 
 .board-button {
+    display: flex;
+    justify-content: center;
     width: 150px;
     height: 150px;
     border: none;
@@ -154,7 +157,7 @@ h1, h2, h3, h4, h5, h6 {
     display: none;
 }
 
-svg {
+.x-marker, .o-marker {
     min-width: 50px;
     width: 50px;
 }
