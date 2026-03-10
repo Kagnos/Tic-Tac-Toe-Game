@@ -4,16 +4,8 @@
 
     let gameBoard = ["", "", "", "", "", "", "", "", ""];
 
-    let playerX = {
-        name: "Player X",
-        marker: "X",
-        score: 0
-    };
-    let playerO = {
-        name: "Player O",
-        marker: "O",
-        score: 0
-    };
+    let playerX = createPlayer("Player X", "X");
+    let playerO = createPlayer("Player O", "O");
 
     const startGameButton = document.querySelector("#start-game-button");
     const newGameButton = document.querySelector("#new-game-button");
@@ -29,6 +21,14 @@
 
     const scoreboard = document.querySelector("#scoreboard");
     const gameMessage = document.querySelector("#game-message");
+
+    function createPlayer(name, marker) {
+        return {
+            name,
+            marker,
+            score: 0
+        };
+    };
 
     function startGame () {
 
@@ -174,5 +174,4 @@
             };
         });
     });
-
 })();

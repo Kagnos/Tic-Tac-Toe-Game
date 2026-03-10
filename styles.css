@@ -68,15 +68,15 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: min(5vh, 50px);
-    margin: min(7vh, 70px) 0;
+    gap: min(5vh, 20px);
+    margin: min(7vh, 40px) 0;
 }
 
 #main-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: min(5vh, 50px);
+    gap: min(5vh, 20px);
 }
 
 /* Header */
@@ -136,6 +136,10 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 5px;
 }
 
+.hidden {
+    display: none;
+}
+
 /* Main */
 
 #game-info-container {
@@ -154,6 +158,7 @@ h1, h2, h3, h4, h5, h6 {
     gap: 5px;
     padding: 5px;
     border-radius: 5px;
+    margin-bottom: 50px;
 }
 
 .board-button {
@@ -164,12 +169,69 @@ h1, h2, h3, h4, h5, h6 {
     border: none;
 }
 
-/* Other */
-
-.hidden {
-    display: none;
+.x-marker, .o-marker {
+    min-width: 120px;
+    width: 120px;
 }
 
-.x-marker, .o-marker {
-    width: 120px;
+/* Media Queries */
+
+@media (max-height: 1000px) {
+    .board-button {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+@media (max-width: 700px) {
+    #player-vs-container {
+        font-size: 2rem;
+    }
+
+    #vs-text {
+        font-size: 3rem;
+    }
+
+    .board-button {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+@media (max-width: 600px) {
+    #title-text {
+        font-size: 3rem;
+    }
+
+    #player-form, #player-vs-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .board-button {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media (max-width: 350px) {
+    .board-button {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+@media (max-width: 290px) {
+    #title-text, #vs-text {
+        font-size: 2rem;
+    }
+
+    .header-button, #player-vs-container, #game-info-container {
+        font-size: 1rem;
+    }
+
+    .board-button {
+        width: 50px;
+        height: 50px;
+    }
 }
