@@ -31,9 +31,9 @@ function runGame () {
                 case "start-game-button":
                     return startGame();  
                 case "new-game-button":
-                    return startNewGame();
+                    return resetGame();
                 case "play-again-button":
-                    return playGameAgain();
+                    return startAnotherGame();
             };
         })
     );
@@ -43,17 +43,15 @@ function runGame () {
         playerXNameInput.classList.add("hidden");
         playerONameInput.classList.add("hidden");
 
+        if (playerXNameInput.value !== "") playerX.name = playerXNameInput.value;
+        if (playerONameInput.value !== "") playerO.name = playerONameInput.value;
+
+        playerOVsText.textContent = playerO.name;
+        playerXVsText.textContent = playerX.name;
+
+        scoreboard.textContent = `${playerX.score} - ${playerO.score}`;
+
         activePlayer = playerX;
-
-        if (playerXNameInput.value !== "") {
-            playerX.name = playerXNameInput.value;
-            playerXVsText.textContent = playerX.name;
-        };
-        if (playerONameInput.value !== "") {
-            playerO.name = playerONameInput.value;
-            playerOVsText.textContent = playerO.name;
-        };
-
         gameMessage.textContent = `${activePlayer.name}'s turn`;
 
         playerXVsText.classList.remove("hidden");
@@ -123,6 +121,31 @@ function runGame () {
     function changeTurns (nextPlayer) {
         activePlayer = nextPlayer;
         gameMessage.textContent = `${activePlayer.name}'s turn`;
+    };
+
+    function resetGame () {
+        const playerForm = document.querySelector("#player-form");
+        const allXMarkers = document.querySelectorAll(".x-marker");
+        const allOMarkers = document.querySelectorAll(".o-marker");
+
+        playerX.name = "Player X";
+        playerO.name = "Player O";
+        playerX.score = 0;
+        playerO.score = 0;
+        playerForm.reset();
+        allXMarkers.forEach((marker) => marker.remove());
+        allOMarkers.forEach((marker) => marker.remove());
+
+        newGameButton.classList.add("hidden");
+        playAgainButton.classList.add("hidden");
+        playerXVsText.classList.add("hidden");
+        playerOVsText.classList.add("hidden");
+        scoreboard.classList.add("hidden");
+        gameMessage.classList.add("hidden");
+
+        startGameButton.classList.remove("hidden");
+        playerXNameInput.classList.remove("hidden");
+        playerONameInput.classList.remove("hidden");
     };
 
 };

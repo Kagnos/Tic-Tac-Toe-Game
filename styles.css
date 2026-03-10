@@ -126,6 +126,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #button-container {
     display: flex;
+    min-height: 56px;
     gap: 50px;
 }
 
@@ -138,6 +139,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Main */
 
 #game-info-container {
+    min-height: 96px;
     text-align: center;
     font-size: 2rem;
 }
