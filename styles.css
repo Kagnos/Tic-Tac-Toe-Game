@@ -100,6 +100,11 @@ h1, h2, h3, h4, h5, h6 {
     gap: 5px;
 }
 
+.header-svg {
+    min-width: 50px;
+    width: 50px;
+}
+
 .player-form-item-container > input {
     font-size: 1.2rem;
     width: 15ch;
@@ -119,6 +124,11 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 4rem;
 }
 
+#button-container {
+    display: flex;
+    gap: 50px;
+}
+
 .header-button {
     font-size: 2rem;
     border: outset;
@@ -127,7 +137,8 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Main */
 
-#turn-indicator-text {
+#game-info-container {
+    text-align: center;
     font-size: 2rem;
 }
 
@@ -158,6 +169,5 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .x-marker, .o-marker {
-    min-width: 50px;
-    width: 50px;
+    width: 120px;
 }
