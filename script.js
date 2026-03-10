@@ -4,12 +4,10 @@
 
     let playerX = {
         name: "Player X",
-        marker: "X",
         score: 0
     };
     let playerO = {
         name: "Player O",
-        marker: "O",
         score: 0
     };
 
@@ -72,104 +70,105 @@
 
     };
 
-        function checkActivePlayer (button) {
+    function checkActivePlayer (button) {
 
-            if (activePlayer === playerX && button.childNodes.length === 0) {
+        if (activePlayer === playerX && button.childNodes.length === 0) {
 
-                const xSVG = document.querySelector("#x-svg");
-                const xMarker = xSVG.cloneNode(true);
+            const xSVG = document.querySelector("#x-svg");
+            const xMarker = xSVG.cloneNode(true);
 
-                xMarker.classList.remove("header-svg");
-                xMarker.classList.add("x-marker");
-                button.appendChild(xMarker);
+            xMarker.classList.remove("header-svg");
+            xMarker.classList.add("x-marker");
+            button.appendChild(xMarker);
 
-                checkGameOver(playerX);
+            checkGameOver(playerX);
 
-            } else if (activePlayer === playerO && button.childNodes.length === 0) {
+        } else if (activePlayer === playerO && button.childNodes.length === 0) {
                 
-                const oSVG = document.querySelector("#o-svg");
-                const oMarker = oSVG.cloneNode(true);
+            const oSVG = document.querySelector("#o-svg");
+            const oMarker = oSVG.cloneNode(true);
 
-                oMarker.classList.remove("header-svg");
-                oMarker.classList.add("o-marker");
-                button.appendChild(oMarker);
+            oMarker.classList.remove("header-svg");
+            oMarker.classList.add("o-marker");
+            button.appendChild(oMarker);
 
-                checkGameOver(playerO);
+            checkGameOver(playerO);
 
-            } else return;
+        } else return;
 
-                function checkGameOver (currentPlayer) {
+            function checkGameOver (currentPlayer) {
 
             const allXMarkers = document.querySelectorAll(".x-marker");
             const allOMarkers = document.querySelectorAll(".o-marker");
 
-            if (allXMarkers.length + allOMarkers.length === 9) {
+            if (currentPlayer === playerX) { 
 
-                gameMessage.textContent = "Cat's game";
-                newGameButton.classList.remove("hidden");
-                playAgainButton.classList.remove("hidden");
+                const xTilesArray = [];
+                allXMarkers.forEach((xMarker) => xTilesArray.push(xMarker.closest(".board-button")));
 
-            } else checkWinCondition(currentPlayer, allXMarkers, allOMarkers);
+                if (xTilesArray.includes(document.querySelector("#board-button-1")) && xTilesArray.includes(document.querySelector("#board-button-2")) && xTilesArray.includes(document.querySelector("#board-button-3")) || 
+                    xTilesArray.includes(document.querySelector("#board-button-4")) && xTilesArray.includes(document.querySelector("#board-button-5")) && xTilesArray.includes(document.querySelector("#board-button-6")) || 
+                    xTilesArray.includes(document.querySelector("#board-button-7")) && xTilesArray.includes(document.querySelector("#board-button-8")) && xTilesArray.includes(document.querySelector("#board-button-9")) ||
+                    xTilesArray.includes(document.querySelector("#board-button-1")) && xTilesArray.includes(document.querySelector("#board-button-4")) && xTilesArray.includes(document.querySelector("#board-button-7")) ||
+                    xTilesArray.includes(document.querySelector("#board-button-2")) && xTilesArray.includes(document.querySelector("#board-button-5")) && xTilesArray.includes(document.querySelector("#board-button-8")) ||
+                    xTilesArray.includes(document.querySelector("#board-button-3")) && xTilesArray.includes(document.querySelector("#board-button-6")) && xTilesArray.includes(document.querySelector("#board-button-9")) ||
+                    xTilesArray.includes(document.querySelector("#board-button-1")) && xTilesArray.includes(document.querySelector("#board-button-5")) && xTilesArray.includes(document.querySelector("#board-button-9")) ||
+                    xTilesArray.includes(document.querySelector("#board-button-3")) && xTilesArray.includes(document.querySelector("#board-button-5")) && xTilesArray.includes(document.querySelector("#board-button-7"))) {
 
-            function checkWinCondition (currentPlayer, allXMarkers, allOMarkers) { 
+                    activePlayer = undefined;
+                    playerX.score++;
 
-                if (currentPlayer === playerX) { 
+                    scoreboard.textContent = `${playerX.score} - ${playerO.score}`;
+                    gameMessage.textContent = `${playerX.name} wins!`;
 
-                    const xTilesArray = [];
-                    allXMarkers.forEach((xMarker) => xTilesArray.push(xMarker.closest(".board-button")));
+                    newGameButton.classList.remove("hidden");
+                    playAgainButton.classList.remove("hidden");
 
-                    if (xTilesArray.includes(document.querySelector("#board-button-1")) && xTilesArray.includes(document.querySelector("#board-button-2")) && xTilesArray.includes(document.querySelector("#board-button-3")) || 
-                        xTilesArray.includes(document.querySelector("#board-button-4")) && xTilesArray.includes(document.querySelector("#board-button-5")) && xTilesArray.includes(document.querySelector("#board-button-6")) || 
-                        xTilesArray.includes(document.querySelector("#board-button-7")) && xTilesArray.includes(document.querySelector("#board-button-8")) && xTilesArray.includes(document.querySelector("#board-button-9")) ||
-                        xTilesArray.includes(document.querySelector("#board-button-1")) && xTilesArray.includes(document.querySelector("#board-button-4")) && xTilesArray.includes(document.querySelector("#board-button-7")) ||
-                        xTilesArray.includes(document.querySelector("#board-button-2")) && xTilesArray.includes(document.querySelector("#board-button-5")) && xTilesArray.includes(document.querySelector("#board-button-8")) ||
-                        xTilesArray.includes(document.querySelector("#board-button-3")) && xTilesArray.includes(document.querySelector("#board-button-6")) && xTilesArray.includes(document.querySelector("#board-button-9")) ||
-                        xTilesArray.includes(document.querySelector("#board-button-1")) && xTilesArray.includes(document.querySelector("#board-button-5")) && xTilesArray.includes(document.querySelector("#board-button-9")) ||
-                        xTilesArray.includes(document.querySelector("#board-button-3")) && xTilesArray.includes(document.querySelector("#board-button-5")) && xTilesArray.includes(document.querySelector("#board-button-7"))) {
+                } else if (allXMarkers.length + allOMarkers.length === 9) {
 
-                        activePlayer = undefined;
-                        playerX.score++;
+                    gameMessage.textContent = "Cat's game";
+                    newGameButton.classList.remove("hidden");
+                    playAgainButton.classList.remove("hidden");
 
-                        scoreboard.textContent = `${playerX.score} - ${playerO.score}`;
-                        gameMessage.textContent = `${playerX.name} wins!`;
+                } else changeTurns (playerO);
 
-                        newGameButton.classList.remove("hidden");
-                        playAgainButton.classList.remove("hidden");
+            } else if (currentPlayer === playerO) {
 
-                    } else changeTurns (playerO);
-
-                } else if (currentPlayer === playerO) {
-
-                    const oTilesArray = [];
-                    allOMarkers.forEach((oMarker) => oTilesArray.push(oMarker.closest(".board-button")));
+                const oTilesArray = [];
+                allOMarkers.forEach((oMarker) => oTilesArray.push(oMarker.closest(".board-button")));
                     
-                    if (oTilesArray.includes(document.querySelector("#board-button-1")) && oTilesArray.includes(document.querySelector("#board-button-2")) && oTilesArray.includes(document.querySelector("#board-button-3")) || 
-                        oTilesArray.includes(document.querySelector("#board-button-4")) && oTilesArray.includes(document.querySelector("#board-button-5")) && oTilesArray.includes(document.querySelector("#board-button-6")) || 
-                        oTilesArray.includes(document.querySelector("#board-button-7")) && oTilesArray.includes(document.querySelector("#board-button-8")) && oTilesArray.includes(document.querySelector("#board-button-9")) ||
-                        oTilesArray.includes(document.querySelector("#board-button-1")) && oTilesArray.includes(document.querySelector("#board-button-4")) && oTilesArray.includes(document.querySelector("#board-button-7")) ||
-                        oTilesArray.includes(document.querySelector("#board-button-2")) && oTilesArray.includes(document.querySelector("#board-button-5")) && oTilesArray.includes(document.querySelector("#board-button-8")) ||
-                        oTilesArray.includes(document.querySelector("#board-button-3")) && oTilesArray.includes(document.querySelector("#board-button-6")) && oTilesArray.includes(document.querySelector("#board-button-9")) ||
-                        oTilesArray.includes(document.querySelector("#board-button-1")) && oTilesArray.includes(document.querySelector("#board-button-5")) && oTilesArray.includes(document.querySelector("#board-button-9")) ||
-                        oTilesArray.includes(document.querySelector("#board-button-3")) && oTilesArray.includes(document.querySelector("#board-button-5")) && oTilesArray.includes(document.querySelector("#board-button-7"))) {
+                if (oTilesArray.includes(document.querySelector("#board-button-1")) && oTilesArray.includes(document.querySelector("#board-button-2")) && oTilesArray.includes(document.querySelector("#board-button-3")) || 
+                    oTilesArray.includes(document.querySelector("#board-button-4")) && oTilesArray.includes(document.querySelector("#board-button-5")) && oTilesArray.includes(document.querySelector("#board-button-6")) || 
+                    oTilesArray.includes(document.querySelector("#board-button-7")) && oTilesArray.includes(document.querySelector("#board-button-8")) && oTilesArray.includes(document.querySelector("#board-button-9")) ||
+                    oTilesArray.includes(document.querySelector("#board-button-1")) && oTilesArray.includes(document.querySelector("#board-button-4")) && oTilesArray.includes(document.querySelector("#board-button-7")) ||
+                    oTilesArray.includes(document.querySelector("#board-button-2")) && oTilesArray.includes(document.querySelector("#board-button-5")) && oTilesArray.includes(document.querySelector("#board-button-8")) ||
+                    oTilesArray.includes(document.querySelector("#board-button-3")) && oTilesArray.includes(document.querySelector("#board-button-6")) && oTilesArray.includes(document.querySelector("#board-button-9")) ||
+                    oTilesArray.includes(document.querySelector("#board-button-1")) && oTilesArray.includes(document.querySelector("#board-button-5")) && oTilesArray.includes(document.querySelector("#board-button-9")) ||
+                    oTilesArray.includes(document.querySelector("#board-button-3")) && oTilesArray.includes(document.querySelector("#board-button-5")) && oTilesArray.includes(document.querySelector("#board-button-7"))) {
 
-                        activePlayer = undefined;
-                        playerO.score++;
+                    activePlayer = undefined;
+                    playerO.score++;
 
-                        scoreboard.textContent = `${playerX.score} - ${playerO.score}`;
-                        gameMessage.textContent = `${playerO.name} wins!`;
+                    scoreboard.textContent = `${playerX.score} - ${playerO.score}`;
+                    gameMessage.textContent = `${playerO.name} wins!`;
 
-                        newGameButton.classList.remove("hidden");
-                        playAgainButton.classList.remove("hidden");
+                    newGameButton.classList.remove("hidden");
+                    playAgainButton.classList.remove("hidden");
 
-                    } else changeTurns (playerX);
-                };
+                } else if (allXMarkers.length + allOMarkers.length === 9) {
 
-                function changeTurns (nextPlayer) {
+                    gameMessage.textContent = "Cat's game";
+                    newGameButton.classList.remove("hidden");
+                    playAgainButton.classList.remove("hidden");
 
-                    activePlayer = nextPlayer;
-                    gameMessage.textContent = `${activePlayer.name}'s turn`;
+                } else changeTurns (playerX);
+            };
+
+            function changeTurns (nextPlayer) {
+
+                activePlayer = nextPlayer;
+                gameMessage.textContent = `${activePlayer.name}'s turn`;
                     
-                };
             };
         };
     };
@@ -219,3 +218,4 @@
 })();
 
 // Git message:
+// Fix bug where cat's game would take place before win condition
