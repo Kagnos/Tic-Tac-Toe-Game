@@ -1,11 +1,18 @@
 (() => {
 
+    class createPlayer {
+        constructor(name, marker) {
+            this.name = name;
+            this.marker = marker;
+            this.score = 0;
+        };
+    };
+
+    const playerX = new createPlayer("Player X", "X");
+    const playerO = new createPlayer("Player O", "O");
+
     let activePlayer;
-
     let gameBoard = ["", "", "", "", "", "", "", "", ""];
-
-    let playerX = createPlayer("Player X", "X");
-    let playerO = createPlayer("Player O", "O");
 
     const startGameButton = document.querySelector("#start-game-button");
     const newGameButton = document.querySelector("#new-game-button");
@@ -21,14 +28,6 @@
 
     const scoreboard = document.querySelector("#scoreboard");
     const gameMessage = document.querySelector("#game-message");
-
-    function createPlayer(name, marker) {
-        return {
-            name,
-            marker,
-            score: 0
-        };
-    };
 
     function startGame () {
 
