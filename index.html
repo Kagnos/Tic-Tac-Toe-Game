@@ -18,41 +18,50 @@
     <form id="player-form">
 
         <div class="player-form-item-container">
+            
             <label for="player-x-name"><svg id="x-svg" class="header-svg" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill="#FF0000" d="M195.2 195.2a64 64 0 0 1 90.496 0L512 421.504 738.304 195.2a64 64 0 0 1 90.496 90.496L602.496 512 828.8 738.304a64 64 0 0 1-90.496 90.496L512 602.496 285.696 828.8a64 64 0 0 1-90.496-90.496L421.504 512 195.2 285.696a64 64 0 0 1 0-90.496z"></path></g></svg></label>
             <input id="player-x-name" type="text" maxlength="12" placeholder="Player X Name">
+
         </div>
 
         <div id="player-vs-container">
+
             <p id="player-x-vs-text" class="hidden">Player X</p>
             <p id="vs-text">VS</p>
             <p id="player-o-vs-text" class="hidden">Player O</p>
+
         </div>
 
         <div class="player-form-item-container">
+
             <label for="player-o-name"><svg id="o-svg" class="header-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#0000FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg></label>
             <input id="player-o-name" type="text" maxlength="12" placeholder="Player O Name">
+
         </div>
 
     </form>
 
     <div id="button-container">
+
         <button id="start-game-button" class="header-button">Start Game</button>
         <button id="new-game-button" class="header-button hidden">New Game</button>
         <button id="play-again-button" class="header-button hidden">Play Again</button>
+
     </div>
-
-
 
 </header>
 
 <main id="main-container">
 
     <div id="game-info-container">
+
         <p id="scoreboard" class="hidden"></p>
         <p id="game-message" class="hidden"></p>
+
     </div>
 
     <div id="board-container">
+
         <button class="board-button" data-index="0"></button>
         <button class="board-button" data-index="1"></button>
         <button class="board-button" data-index="2"></button>
@@ -62,11 +71,9 @@
         <button class="board-button" data-index="6"></button>
         <button class="board-button" data-index="7"></button>
         <button class="board-button" data-index="8"></button>
+
     </div>
 
-
-
 </main>
-
 </body>
 </html>
